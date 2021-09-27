@@ -1,0 +1,2 @@
+﻿<Window x:Class="Wpf.Demo.test"
+</Window>

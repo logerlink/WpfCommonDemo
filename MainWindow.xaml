@@ -1,0 +1,42 @@
+﻿<Window x:Class="Wpf.Demo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf.Demo" xmlns:converter="clr-namespace:Wpf.Demo.ConverterHelper"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="800" Closing="Window_Closing">
+    <Grid>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+                <ColumnDefinition Width="*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <ListView Background="#ebebeb" Name="LV_Menu" SelectedIndex="0" Loaded="LV_Menu_Loaded" SelectionChanged="LV_Menu_SelectionChanged">
+                <ListView.Resources>
+                    <Style TargetType="ListViewItem">
+                        <Setter Property="BorderThickness" Value="0"></Setter>
+                        <Setter Property="FontSize" Value="16"></Setter>
+                        <Setter Property="Height" Value="30"></Setter>
+                        <!--<Setter Property="HorizontalContentAlignment" Value="Center"></Setter> 不要居中  -->
+                        <Style.Triggers>
+                            <Trigger Property="IsSelected" Value="True">
+                                <Setter Property="Foreground" Value="Red"></Setter>
+                                <Setter Property="BorderThickness" Value="0"></Setter>
+                            </Trigger>
+                        </Style.Triggers>
+                    </Style>
+                </ListView.Resources>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <TextBlock Text="{Binding Name}" Tag="{Binding Source}" VerticalAlignment="Center" TextAlignment="Center" HorizontalAlignment="Center"></TextBlock>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+            <Frame Grid.Column="1" x:Name="Frame_Page" NavigationUIVisibility="Hidden">
+
+            </Frame>
+        </Grid>
+    </Grid>
+</Window>

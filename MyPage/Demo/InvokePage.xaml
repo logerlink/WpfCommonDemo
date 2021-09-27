@@ -1,0 +1,28 @@
+﻿<Page x:Class="Wpf.Demo.MyPage.Demo.InvokePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpf.Demo.MyPage.Demo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="InvokePage">
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="30">
+            <Label>正常演示(UI卡死)</Label>
+            <Button Name="Btn_Normal" Click="Btn_Normal_Click" Content="正常执行"></Button>
+            <Label>异常演示(报错)</Label>
+            <Button Name="Btn_Except" Click="Btn_Except_Click" Content="异常执行"></Button>
+            <Label>invoke演示</Label>
+            <Button Name="Btn_Invoke" Click="Btn_Invoke_Click" Content="Invoke执行"></Button>
+            <Label>beginInvoke演示</Label>
+            <Button Name="Btn_BeginInvoke" Click="Btn_BeginInvoke_Click" Content="BeginInvoke执行"></Button>
+            
+        </StackPanel>
+        <StackPanel Margin="0 100 0 0"  Orientation="Horizontal" Height="30">
+            <Label>invoke和beginInvoke的区别</Label>
+            <Button Name="Btn_InvokeDiff" Click="Btn_InvokeDiff_Click" Content="点击查看"></Button>
+            <Label Name="Lb_Invoke"></Label>
+        </StackPanel>
+    </Grid>
+</Page>

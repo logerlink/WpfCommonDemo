@@ -1,0 +1,18 @@
+﻿<Page x:Class="Wpf.Demo.MyPage.Demo.FindPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpf.Demo.MyPage.Demo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="FindPage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="30" Name="SP_Find">
+            <Label>查找父子元素演示</Label>
+            <Button Content="查找父元素" Name="Btn_FindParent" Click="Btn_FindParent_Click" Margin="20 0 20 0"></Button>
+            <Button Content="查找子元素" Name="Btn_FindChild" Click="Btn_FindChild_Click" ></Button>
+        </StackPanel>
+    </Grid>
+</Page>

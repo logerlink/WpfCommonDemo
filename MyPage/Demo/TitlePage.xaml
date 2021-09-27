@@ -1,0 +1,18 @@
+﻿<Page x:Class="Wpf.Demo.MyPage.Demo.TitlePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpf.Demo.MyPage.Demo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TitlePage">
+
+    <Grid>
+        <StackPanel Orientation="Horizontal" Height="30" >
+            <Label>自定义标题框展示</Label>
+            <Button Content="打开标题框" Click="Btn_ShowCustomTitleBar_Click"></Button>
+            <Label>closing演示：点击打开标题框再点击主窗口的关闭按钮，会发现无法关闭程序</Label>
+        </StackPanel>
+    </Grid>
+</Page>

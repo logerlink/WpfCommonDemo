@@ -1,0 +1,135 @@
+﻿<Page x:Class="Wpf.Demo.MyPage.Demo.TextboxDemo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Wpf.Demo.MyPage.Demo"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="TextboxDemo">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+            <RowDefinition Height="80"></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid Grid.Row="0">
+            <Grid.Resources>
+                <Style TargetType="TextBox" x:Key="tb_WaterMark_style">
+                    <Setter Property="Foreground" Value="#333"></Setter>
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Border BorderThickness="1" BorderBrush="Gray" CornerRadius="2">
+                                    <Grid>
+                                        <ScrollViewer x:Name="PART_ContentHost" FontSize="{TemplateBinding FontSize}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="0" IsTabStop="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Margin="4,0"/>
+                                        <TextBlock x:Name="Part_WaterMark" Text="{TemplateBinding Tag}" VerticalAlignment="Center" FontSize="16" Foreground="#aaa" Padding="5 0 0 0" Visibility="Hidden" ></TextBlock>
+                                    </Grid>
+                                </Border>
+                                <ControlTemplate.Triggers>
+                                    <!--无文字则显示水印-->
+                                    <Trigger Property="Text" Value="">
+                                        <Setter TargetName="Part_WaterMark" Property="Visibility" Value="Visible"></Setter>
+                                    </Trigger>
+                                </ControlTemplate.Triggers>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Label>水印</Label>
+            <TextBox Width="150" Height="30" Text="" Style="{StaticResource tb_WaterMark_style}" Tag="请输用户名" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"></TextBox>
+        </Grid>
+
+        <Border BorderThickness="0 0 0 1" BorderBrush="Blue" Grid.Row="1">
+            <Grid>
+                <Label>滚动条</Label>
+                <StackPanel Orientation="Horizontal" Margin="100 0 0 0">
+                    <Label>横向滚动条</Label>
+                    <TextBox Width="150" Height="35" HorizontalScrollBarVisibility="Auto" Text="111111111111111111111111111111111111111111111111111122222222222222555555555555555555555555555555555555555555555"></TextBox>
+                    <Label>纵向滚动条、自动换行</Label>
+                    <TextBox Width="150" Height="80" VerticalScrollBarVisibility="Auto" TextWrapping="Wrap" Text="1111111111111111111111111111111111111111111111111111111111111222222222222225555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555"></TextBox>
+                </StackPanel>
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="2" Margin="0 50 0 0">
+            <Grid.Resources>
+                <Style TargetType="TextBox" x:Key="tb_Username_Style">
+                    <Setter Property="Template">
+                        <Setter.Value>
+                            <ControlTemplate TargetType="TextBox">
+                                <Grid>
+                                    <Border x:Name="PART_Border" BorderBrush="{TemplateBinding BorderBrush}" BorderThickness="{TemplateBinding BorderThickness}" Background="{TemplateBinding Background}"
+                                    SnapsToDevicePixels="true">
+                                        <Grid>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="*"></ColumnDefinition>
+                                                <ColumnDefinition Width="35"></ColumnDefinition>
+                                            </Grid.ColumnDefinitions>
+                                            <Grid Grid.Column="0">
+                                                <ScrollViewer x:Name="PART_ContentHost" FontSize="{TemplateBinding FontSize}" Width="{TemplateBinding Width}" Height="{TemplateBinding Height}" BorderThickness="0" IsTabStop="False"
+                                          HorizontalAlignment="{TemplateBinding HorizontalAlignment}" HorizontalContentAlignment="{TemplateBinding HorizontalContentAlignment}" VerticalContentAlignment="{TemplateBinding VerticalContentAlignment}" VerticalAlignment="{TemplateBinding VerticalAlignment}" Margin="4,0"/>
+                                            </Grid>
+                                            <Grid Grid.Column="1">
+                                                <Button Width="30" Height="30" BorderThickness="0" Background="#fff" Content="✕" FontSize="18" Click="Btn_Clear2_Click"></Button>
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </Grid>
+                            </ControlTemplate>
+                        </Setter.Value>
+                    </Setter>
+                </Style>
+            </Grid.Resources>
+            <Label>文本框包按钮</Label>
+            <StackPanel Orientation="Horizontal" Margin="100 0 0 0">
+                <Label>margin定位</Label>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="150" Height="35" VerticalContentAlignment="Center" Text="" Name="Tb_Username"></TextBox>
+                    <Button Width="30" Height="30" BorderThickness="0" Background="#fff" Margin="-35 0 0 0" Content="✕" FontSize="18" Click="Btn_Clear_Click"></Button>
+                </StackPanel>
+                <Label>Grid 栅格实现</Label>
+                <TextBox Width="150" Height="35" VerticalContentAlignment="Center" Text="" Name="Tb_Username2" Style="{StaticResource tb_Username_Style}" BorderThickness="1" BorderBrush="Gray"></TextBox>
+            </StackPanel>
+        </Grid>
+        <Border BorderThickness="0 0 0 1" BorderBrush="red" Grid.Row="3">
+            <Grid>
+                <Grid.Resources>
+                    <Style TargetType="{x:Type ToggleButton}" x:Key="tg_password_style">
+                        <Setter Property="Template">
+                            <Setter.Value>
+                                <ControlTemplate TargetType="ToggleButton">
+                                    <TextBlock x:Name="PART_EyeText" FontSize="20" Margin="0,0,10,0" Text="■" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+                                    <ControlTemplate.Triggers>
+                                        <Trigger  Property="IsChecked" Value="True">
+                                            <Setter TargetName="PART_EyeText" Property="Text" Value="□"/>
+                                        </Trigger>
+                                        <Trigger Property="IsChecked" Value="False">
+                                            <Setter TargetName="PART_EyeText" Property="Text" Value="■"/>
+                                        </Trigger>
+                                    </ControlTemplate.Triggers>
+                                </ControlTemplate>
+                            </Setter.Value>
+                        </Setter>
+                    </Style>
+                </Grid.Resources>
+                <Label>密码框的实现</Label>
+                <StackPanel Orientation="Horizontal" Margin="100 0 0 0">
+                    <PasswordBox Password="123456789" Width="250" Height="35" VerticalContentAlignment="Center" Name="pw_password"></PasswordBox>
+                    <TextBox Text="123456789" Width="250" Height="35" VerticalContentAlignment="Center" Visibility="Collapsed" Name="tb_password"></TextBox>
+                    <ToggleButton x:Name="PART_Eye" Style="{StaticResource tg_password_style}" Click="PART_Eye_Click" Height="22" Margin="-26 -5 0 0"/>
+                </StackPanel>
+            </Grid>
+        </Border>
+        <Grid Grid.Row="4">
+            <Label>聚焦选中文本</Label>
+            <TextBox Text="点击我选中全部文本" FontSize="16" Width="250" Height="35" Name="tb_focus" VerticalContentAlignment="Center" GotFocus="tb_focus_GotFocus" PreviewMouseDown="tb_focus_PreviewMouseDown" LostFocus="tb_focus_LostFocus"></TextBox>
+        </Grid>
+    </Grid>
+</Page>

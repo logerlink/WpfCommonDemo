@@ -1,0 +1,29 @@
+﻿<Window x:Class="Wpf.Demo.Form.PopupDemo"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Wpf.Demo.Form"
+        mc:Ignorable="d"
+        Title="Popup" Height="450" Width="800" WindowStartupLocation="CenterOwner" SizeChanged="Window_SizeChanged" LocationChanged="Window_SizeChanged">
+    <Grid>
+        <Grid>
+            <StackPanel Orientation="Horizontal" Height="30" >
+                <Label>popup展示    点击然后更改窗体大小或位置</Label>
+                <Button Content="打开Popup" Name="Btn_ShowPup" Click="Btn_ShowPup_Click" ></Button>
+                <Button Content="打开PopupAuto" Name="Btn_ShowPupAuto" Click="Btn_ShowPupAuto_Click" Margin="20 0 20 0"></Button>
+                <Button Content="关闭所有popup" Name="Btn_ClosePup" Click="Btn_ClosePup_Click"></Button>
+            </StackPanel>
+            <Popup IsOpen="False" StaysOpen="True" Width="250" Height="100" Name="Pup_Message" PlacementTarget="{Binding ElementName=Btn_ShowPup}">
+                <Border BorderThickness="1" BorderBrush="#333" Background="#fff">
+                    <Label>这是PopUp1弹框 不会随着窗口移动</Label>
+                </Border>
+            </Popup>
+            <Popup IsOpen="False" StaysOpen="True" Width="250" Height="100" Name="Pup_Message_Auto" PlacementTarget="{Binding ElementName=Btn_ShowPupAuto}">
+                <Border BorderThickness="1" BorderBrush="#333" Background="#fff">
+                    <Label>这是PopUp2弹框 跟随窗口移动</Label>
+                </Border>
+            </Popup>
+        </Grid>
+    </Grid>
+</Window>
